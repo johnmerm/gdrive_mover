@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Files</title>
+</head>
+<body>
+<form action="/{{.Type}}/transfer" method="post">
+<input type="submit" value="Move">
+<table>
+
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>QuotaBytesUsed</th>
+        <th>Owners</th>
+        <th>Parents</th>
+    </tr>
+    {{range .Files}}
+    <tr>
+        <td><input type="checkbox" id="file-{{.Id}}" name="fileId" value="{{.Id}}"> </td>
+        <td>{{.Id}}</td>
+        <td>{{.Name}}</td>
+        <td>{{formatSize .Size}}</td>
+        <td>{{formatSize .QuotaBytesUsed}}</td>
+        <td>{{.Owners}}</td>
+        <td>{{.Parents}}</td>
+    </tr>
+    {{end}}
+    </tbody>
+</table>
+</form>
+</body>
+</html>
